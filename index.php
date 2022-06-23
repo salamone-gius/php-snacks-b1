@@ -24,7 +24,18 @@
             'homeScore' => 91,
             'guestScore' => 73,
         ],
-    ]
+    ];
+
+    $name = $_GET['name'];
+    $age = $_GET['age'];
+    $email = $_GET['email'];
+
+    if (strlen($name) > 3 && is_numeric($age) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "Accesso Riuscito";
+    } else {
+        echo "Accesso Negato";
+    };
+
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +52,6 @@
             <?php for ($i = 0; $i < count($matches); $i++) { ?>
                 <li style="margin-bottom: 20px;"><?php echo "{$matches[$i]['home']} - {$matches[$i]['guests']} | {$matches[$i]['homeScore']}-{$matches[$i]['guestScore']}"; ?></li>
             <?php } ?>
-
         </ul>
     </body>
 </html>
